@@ -19,7 +19,6 @@
   "bugs": {
     "url": "https://github.com/XenyaNemkina/express-mesto-gha/issues"
   },
-  "homepage": "https://github.com/XenyaNemkina/express-mesto-gha#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.1",
