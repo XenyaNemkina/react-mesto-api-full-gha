@@ -3,7 +3,7 @@ const express = require('express');
 const { PORT = 3000 } = process.env;
 const app = express();
 const mongoose = require('mongoose');
-// const cors = require('cors');
+const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const validationErrors = require('celebrate').errors;
 const router = require('./routes/index');
@@ -17,13 +17,14 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
     console.log('Присоединился к БД');
   });
 
-/* app.use(cors({
-  credentials: true,
+const options = {
   origin: [
+    'http://localhost:3000',
     'http://mesto.xenyanemkina.nomoredomains.rocks',
-    'https://mesto.xenyanemkina.nomoredomains.rocks',
   ],
-}));*/
+  credentials: true,
+};
+app.use('*', cors(options));
 app.use(requestLogger);
 app.use(express.json());
 app.use(cookieParser());
