@@ -20,6 +20,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 const options = {
   origin: [
     'http://localhost:3000',
+    'http://localhost:3001',
     'http://mesto.xenyanemkina.nomoredomains.rocks',
   ],
   credentials: true,
