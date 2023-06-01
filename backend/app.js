@@ -1,9 +1,9 @@
 const express = require('express');
+const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
 const app = express();
 const mongoose = require('mongoose');
-const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const validationErrors = require('celebrate').errors;
 const router = require('./routes/index');
