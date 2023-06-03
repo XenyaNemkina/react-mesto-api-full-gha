@@ -1,8 +1,8 @@
 const http2 = require('http2');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 const { NotFoundError } = require('../errors/NotFoundError');
 const User = require('../models/users');
+const { generateToken } = require('../helpers/jwt');
 
 const {
   HTTP_STATUS_OK, // 200
@@ -19,7 +19,6 @@ const getUsers = (req, res, next) => {
 
 const findUser = (req, res, _id, next) => {
   User.findById(({ _id }))
-    .orFail()
     .then((user) => {
       if (!user) {
         next(new NotFoundError({ message: 'Пользователь не найден' }));
@@ -35,7 +34,7 @@ const getUser = (req, res, next) => {
 };
 
 const getCurrentUser = (req, res, next) => {
-  const { _id } = req.user;
+  const { _id } = req.user._id;
   findUser(req, res, _id, next);
 };
 
@@ -82,19 +81,15 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign(
-        { _id: user._id },
-        'some-secret-key',
-        {
-          expiresIn: '7d',
-        },
-      );
+      const token = generateToken({ email: user.email, type: 'admin' });
       res.cookie('jwt', token, {
         maxAge: 3600000,
         httpOnly: true,
-        sameSite: true,
+        sameSite: 'none',
+        secure: true,
       });
-      res.status(HTTP_STATUS_OK).send({ message: 'Аутентификация прошла успешно' });
+      res.send({ token });
+      // res.status(HTTP_STATUS_OK).send({ message: 'Аутентификация прошла успешно' });
     })
     .catch(next);
 };

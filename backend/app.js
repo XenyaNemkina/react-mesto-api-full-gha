@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const cors = require('cors');
 
 const { PORT = 3000 } = process.env;
@@ -18,14 +19,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
   });
 
 const options = {
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'http://mesto.xenyanemkina.nomoredomains.rocks',
-  ],
-  credentials: true,
+  origin: '*',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
 };
-app.use('*', cors(options));
+app.use(cors(options));
 app.use(requestLogger);
 app.use(express.json());
 app.use(cookieParser());

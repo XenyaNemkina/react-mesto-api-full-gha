@@ -32,10 +32,6 @@ const deleteCard = (req, res, next) => {
   Card.findById(cardId)
     .orFail()
     .then(async (card) => {
-      console.log('cardid', cardId);
-      console.log('card', card);
-      console.log('card.owner.toString', card.owner.toString());
-      console.log('req.user.id', req.user._id);
       if (!card) {
         throw new NotFoundError('Такой карточки нет');
       }
