@@ -23,7 +23,7 @@ const findUser = (req, res, _id, next) => {
       if (!user) {
         next(new NotFoundError({ message: 'Пользователь не найден' }));
       }
-      res.status(HTTP_STATUS_OK).send({ data: user });
+      res.status(HTTP_STATUS_OK).send(user);
     })
     .catch(next);
 };
@@ -60,9 +60,14 @@ const createUser = (req, res, next) => {
 };
 
 const updateData = (req, res, data, next) => {
-  User.findByIdAndUpdate(req.user._id, data, { new: true, runValidators: true })
+  User.findByIdAndUpdate(req.user.id, data, { new: true, runValidators: true })
     .then((user) => {
-      res.status(HTTP_STATUS_OK).send(user);
+      res.send({
+        _id: user._id,
+        avatar: user.avatar,
+        name: user.name,
+        about: user.about,
+      });
     })
     .catch(next);
 };

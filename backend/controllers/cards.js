@@ -20,7 +20,7 @@ const getCards = (req, res, next) => {
 
 const createCard = (req, res, next) => {
   const { name, link } = req.body;
-  const ownerId = req.user._id;
+  const ownerId = req.user.id;
   Card.create({ name, link, owner: ownerId })
     .then((card) => card.populate('owner'))
     .then((card) => res.status(HTTP_STATUS_CREATED).send(card))
@@ -35,7 +35,7 @@ const deleteCard = (req, res, next) => {
       if (!card) {
         throw new NotFoundError('Такой карточки нет');
       }
-      if (card.owner.toString() !== req.user._id) {
+      if (card.owner.toString() !== req.user.id) {
         throw new ForbiddenError('Нельзя удалить чужую карточку!');
       }
       const delCard = await Card.findByIdAndRemove(cardId);
@@ -61,12 +61,12 @@ const cardLikesChange = (req, res, data, next) => {
 };
 
 const likeCard = (req, res, next) => {
-  const data = { $addToSet: { likes: req.user._id } };
+  const data = { $addToSet: { likes: req.user.id } };
   cardLikesChange(req, res, data, next);
 };
 
 const dislikeCard = (req, res, next) => {
-  const data = { $pull: { likes: req.user._id } };
+  const data = { $pull: { likes: req.user.id } };
   cardLikesChange(req, res, data, next);
 };
 
