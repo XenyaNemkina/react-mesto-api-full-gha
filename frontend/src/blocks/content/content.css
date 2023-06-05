@@ -1,0 +1,12 @@
+.content {
+  max-width: 882px;
+  justify-items: center;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 684px) {
+  .content {
+    width: 282px;
+    margin: 0 auto;
+  }
+}

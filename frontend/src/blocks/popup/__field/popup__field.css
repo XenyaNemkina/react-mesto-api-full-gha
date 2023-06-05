@@ -1,0 +1,28 @@
+.popup__field {
+  width: 358px;
+  height: 27px;
+  display: flex;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: black;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  padding: 0;
+}
+
+.popup__field::placeholder {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #c4c4c4;
+}
+
+@media screen and (max-width: 590px) {
+  .popup__field {
+    width: 238px;
+  }
+}

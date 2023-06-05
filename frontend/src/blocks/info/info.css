@@ -1,0 +1,16 @@
+.info {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
+  align-items: baseline;
+  column-gap: 18px;
+  font-family: "Inter", Arial, sans-serif;
+  margin: 0 0 0 30px;
+}
+
+@media screen and (max-width: 1053px) {
+  .info {
+    margin-top: 26px;
+    margin-bottom: 36px;
+    column-gap: 10px;
+  }
+}

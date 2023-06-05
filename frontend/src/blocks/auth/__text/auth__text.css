@@ -1,0 +1,15 @@
+.auth__text {
+  color: white;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  text-align: center;
+}
+
+@media screen and (max-width: 685px) {
+  .auth__text {
+      max-width: 260px;
+    }
+  }
+

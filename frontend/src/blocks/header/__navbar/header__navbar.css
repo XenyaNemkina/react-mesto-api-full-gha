@@ -1,0 +1,12 @@
+.header__navbar {
+  font-family: Inter, Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+
+@media screen and (max-width: 420px) {
+ .header__navbar {
+  flex-direction: column;
+  visibility: hidden;
+ }
+}

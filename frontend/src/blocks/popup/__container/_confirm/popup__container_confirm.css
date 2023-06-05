@@ -1,0 +1,9 @@
+.popup__container_confirm {
+  position: relative;
+  width: 430px;
+  background-color: white;
+  margin: 195px auto;
+  padding: 0;
+  border-radius: 10px;
+  font-family: "Inter", Arial, sans-serif;
+}

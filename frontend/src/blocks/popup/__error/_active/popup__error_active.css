@@ -1,0 +1,17 @@
+.popup__error_active {
+  display: block;
+  min-width: 162px;
+  min-height: 30px;
+  margin: 5px 36px 0px;
+  font-weight: 400;
+  font-size: 12px;
+  color: #ff0000;
+  border: none;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+@media screen and (max-width: 590px) {
+  .popup__error_active {
+    margin: 5px 0px 0px;
+  }
+}

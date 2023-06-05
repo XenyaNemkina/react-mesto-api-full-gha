@@ -1,0 +1,13 @@
+.popup__infotooltip_fail {
+  width: 120px;
+  height: 120px;
+  background-image: url("../../../../images/round_fail.png");
+  background-repeat: no-repeat;
+  margin: 60px 155px 32px;
+}
+
+@media screen and (max-width: 590px) {
+  .popup__infotooltip_fail {
+    margin: 50px 80px 40px;
+  }
+}

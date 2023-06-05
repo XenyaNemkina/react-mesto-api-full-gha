@@ -1,0 +1,20 @@
+.popup__save_auth-button {
+  background-color: white;
+  margin: 186px auto 15px;
+  color: black;
+  font-size: 18px;
+  line-height: 22px;
+  border-radius: 2px;
+  border: 0;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 685px) {
+  .popup__save_auth-button {
+    max-width: 260px;
+    max-height: 46px;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 143px auto 20px;
+  }
+}

@@ -1,0 +1,15 @@
+.auth__field {
+  max-width: 100%;
+  background-color: black;
+  color:#CCCCCC;
+  border: none;
+  border-bottom: 2px solid #CCCCCC;
+  margin: 0 auto;
+  padding: 0;
+}
+
+@media screen and (max-width: 685px) {
+  .auth__field {
+    max-width: 260px;
+  }
+}

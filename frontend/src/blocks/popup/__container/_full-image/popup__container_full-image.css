@@ -1,0 +1,12 @@
+.popup__container_full-image {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: max-content;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  font-family: "Inter", Arial, sans-serif;
+}
+

@@ -1,0 +1,12 @@
+.info__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 1053px) {
+  .info__text {
+    align-items: center;
+    margin: 0 auto;
+  }
+}
