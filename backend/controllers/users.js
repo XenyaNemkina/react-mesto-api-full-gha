@@ -1,6 +1,6 @@
 const http2 = require('http2');
 const bcrypt = require('bcryptjs');
-const { NotFoundError } = require('../errors/NotFoundError');
+const NotFoundError = require('../errors/NotFoundError');
 const User = require('../models/users');
 const { generateToken } = require('../helpers/jwt');
 
@@ -34,7 +34,7 @@ const getUser = (req, res, next) => {
 };
 
 const getCurrentUser = (req, res, next) => {
-  const { _id } = req.user._id;
+  const _id = req.user.id;
   findUser(req, res, _id, next);
 };
 
@@ -81,7 +81,7 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = generateToken({ email: user.email, type: 'admin' });
+      const token = generateToken({ email: user.email, type: 'admin', id: user._id });
       res.cookie('jwt', token, {
         maxAge: 3600000,
         httpOnly: true,
