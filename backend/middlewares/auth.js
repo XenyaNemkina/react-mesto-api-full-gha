@@ -2,7 +2,6 @@ const { checkToken } = require('../helpers/jwt');
 const UnauthorizedError = require('../errors/UnautorizedError');
 
 module.exports = (req, res, next) => {
-  console.log(req.headers.authorization);
   if (req.headers.authorization === undefined) {
     return next(new UnauthorizedError('Авторизуйтесь'));
   }

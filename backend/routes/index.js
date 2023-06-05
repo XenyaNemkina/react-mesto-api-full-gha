@@ -7,8 +7,15 @@ const signup = require('./signup');
 const userRouter = require('./users');
 const cardRouter = require('./cards');
 
-router.use('/signin', signin);
-router.use('/signup', signup);
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
+router.post('/signin', signin);
+router.post('/signup', signup);
+
 router.use('/users', auth, userRouter);
 router.use('/cards', auth, cardRouter);
 router.use('*', auth, (req, res, next) => {
