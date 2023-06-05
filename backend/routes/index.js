@@ -13,8 +13,8 @@ router.get('/crash-test', () => {
   }, 0);
 });
 
-router.post('/signin', signin);
-router.post('/signup', signup);
+router.use('/signin', signin);
+router.use('/signup', signup);
 
 router.use('/users', auth, userRouter);
 router.use('/cards', auth, cardRouter);
