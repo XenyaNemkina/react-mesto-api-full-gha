@@ -21,7 +21,7 @@ const findUser = (req, res, _id, next) => {
   User.findById(({ _id }))
     .then((user) => {
       if (!user) {
-        next(new NotFoundError({ message: 'Пользователь не найден' }));
+        throw new NotFoundError({ message: 'Пользователь не найден' });
       }
       res.status(HTTP_STATUS_OK).send(user);
     })
@@ -73,13 +73,13 @@ const updateData = (req, res, data, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const data = req.body;
-  updateData(req, res, data, next);
+  const { name, about } = req.body;
+  updateData(req, res, { name, about }, next);
 };
 
 const updateAvatar = (req, res, next) => {
-  const data = req.body;
-  updateData(req, res, data, next);
+  const avatar = req.body;
+  updateData(req, res, avatar, next);
 };
 
 const login = (req, res, next) => {
@@ -94,7 +94,6 @@ const login = (req, res, next) => {
         secure: true,
       });
       res.send({ token });
-      // res.status(HTTP_STATUS_OK).send({ message: 'Аутентификация прошла успешно' });
     })
     .catch(next);
 };

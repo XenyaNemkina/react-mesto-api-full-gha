@@ -32,13 +32,10 @@ const deleteCard = (req, res, next) => {
   Card.findById(cardId)
     .orFail()
     .then(async (card) => {
-      if (!card) {
-        throw new NotFoundError('Такой карточки нет');
-      }
       if (card.owner.toString() !== req.user.id) {
         throw new ForbiddenError('Нельзя удалить чужую карточку!');
       }
-      const delCard = await Card.findByIdAndRemove(cardId);
+      const delCard = await Card.deleteOne(card);
       return res.status(HTTP_STATUS_OK).send(delCard);
     })
     .catch(next);
